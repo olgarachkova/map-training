@@ -2,7 +2,7 @@ import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import './App.css';
 
 interface ChildrenExampleProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 
