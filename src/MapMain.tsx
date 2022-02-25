@@ -1,14 +1,16 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React from 'react';
 import './App.css';
 const DG = require('2gis-maps');
 
-interface MapMainProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    center: [Number, Number];
-    zoom: Number;
+interface IMapMainProps {
+    center: [number, number],
+    zoom: number
 }
 
-function MapMain({ center, zoom, children, ...props }: MapMainProps) {
-    let map: any;
+let map: any;
+
+const MapMain: React.FC<IMapMainProps> = ({center, zoom, children}) => {
+
     /*for (let i = 0; i < (children as any).length; i++) {
         if ((children as any)[i].type.name === 'Marker') {
             console.log((children as any)[i]?.props?.children);
@@ -27,27 +29,25 @@ function MapMain({ center, zoom, children, ...props }: MapMainProps) {
                     if (node) {
                         if (!map) {
                             map = DG.map('map', {
-                                'center': center,
-                                'zoom': zoom,
+                                center,
+                                zoom
                             });
                             for (let i = 0; i < (children as any).length; i++) {
                                 if ((children as any)[i].type.name === 'Marker') {
+                                    let marker = DG.marker((children as any)[i].props.position).addTo(map);
+                                    
                                     if ((children as any)[i]?.props?.children?.type.name === 'Popup') {
-                                        DG.marker((children as any)[i].props.position).addTo(map).bindPopup((children as any)[i]?.props?.children?.props?.children);
-                                    } else {
-                                        DG.marker((children as any)[i].props.position).addTo(map);
+                                        marker.bindPopup((children as any)[i]?.props?.children?.props?.children);
                                     }
                                 };
                                 if ((children as any)[i].type.name === 'Circle') {
                                     DG.circle((children as any)[i].props.position, (children as any)[i].props.radius).addTo(map);
                                 };
                             }
-
                         }
                     }
                 }}
             ></div>
-            {children}
         </>
     );
 }
