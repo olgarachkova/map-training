@@ -1,11 +1,11 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React from 'react';
 import './App.css';
 
-interface MarkerProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    position?: [Number, Number];
+interface IMarkerProps {
+    position: [number, number];
 }
 
-function Marker({ position }: MarkerProps) {
+const Marker: React.FC<IMarkerProps> = ({ position }) => {
     return (
         <></>
     );

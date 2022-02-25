@@ -1,11 +1,11 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './App.css';
 
-interface PopupProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface IPopupProps {
     children: ReactNode;
 }
 
-function Popup({ ...props }: PopupProps) {
+const Popup: React.FC<IPopupProps> = () => {
     return (
         <></>
     );

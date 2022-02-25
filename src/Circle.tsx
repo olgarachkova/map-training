@@ -1,12 +1,12 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React from 'react';
 import './App.css';
 
-interface CircleProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    position: [Number, Number];
-    radius: Number;
+interface ICircleProps {
+    position: [number, number];
+    radius: number;
 }
 
-function Circle({ position }: CircleProps) {
+const Circle: React.FC<ICircleProps> = ({ position, radius }) => {
     return (
         <></>
     );
