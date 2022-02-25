@@ -1,11 +1,10 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import './App.css';
 const DG = require('2gis-maps');
 
 interface MapMainProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     center: [Number, Number];
     zoom: Number;
-    children?: ReactNode;
 }
 
 function MapMain({ center, zoom, children, ...props }: MapMainProps) {
@@ -23,6 +22,11 @@ function MapMain({ center, zoom, children, ...props }: MapMainProps) {
                                 'center': center,
                                 'zoom': zoom,
                             });
+                            for (let i = 0; i < (children as any).length; i++) {
+                                if ((children as any)[i].type.name === 'Marker') {
+                                    DG.marker((children as any)[i].props.position).addTo(map);
+                                };
+                            }
                         }
                     }
                 }}

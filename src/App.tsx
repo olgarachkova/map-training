@@ -8,11 +8,9 @@ function App() {
   return (
     <div className="App">
       <MapMain center={[54.98, 82.89]} zoom={13}>
-        <Marker />
+        <Marker position={[54.98, 82.89]} />
+        <Marker position={[54.97, 82.91]} />
       </MapMain>
-      <ChildrenExample>
-        <p>I'm children!!!!</p>
-      </ChildrenExample>
     </div>
   );
 }
