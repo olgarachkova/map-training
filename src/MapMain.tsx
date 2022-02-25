@@ -33,6 +33,9 @@ const MapMain: React.FC<IMapMainProps> = ({ center, zoom, children }) => {
                             if ((children as any)[i].type.name === 'Circle') {
                                 DG.circle((children as any)[i].props.position, (children as any)[i].props.radius).addTo(map);
                             };
+                            if ((children as any)[i].type.name === 'Polygon') {
+                                DG.polygon((children as any)[i].props.latlngs).addTo(map);
+                            };
                         }
                     }
                 }

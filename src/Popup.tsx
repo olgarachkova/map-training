@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import './App.css';
 
 interface IPopupProps {
-    children: ReactNode;
+    children: ReactNode,
 }
 
 const Popup: React.FC<IPopupProps> = () => {
